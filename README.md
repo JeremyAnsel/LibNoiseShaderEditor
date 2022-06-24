@@ -14,3 +14,8 @@ Library         | https://github.com/JeremyAnsel/JeremyAnsel.LibNoiseShader
 Original code   | http://libnoise.sourceforge.net/
 
 > libnoise is a portable C++ library that is used to generate coherent noise, a type of smoothly-changing noise. libnoise can generate Perlin noise, ridged multifractal noise, and other types of coherent-noise.
+
+
+![LibNoiseShaderEditor-TextureSlimeSphere](Images/LibNoiseShaderEditor-TextureSlimeSphere.png)
+
+![LibNoiseShaderEditor-TextureSlime3D](Images/LibNoiseShaderEditor-TextureSlime3D.png)
