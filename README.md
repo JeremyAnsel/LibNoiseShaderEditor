@@ -20,3 +20,5 @@ Original code   | http://libnoise.sourceforge.net/
 ![LibNoiseShaderEditor-TextureSlimeSphere](Images/LibNoiseShaderEditor-TextureSlimeSphere.png)
 
 ![LibNoiseShaderEditor-TextureSlime3D](Images/LibNoiseShaderEditor-TextureSlime3D.png)
+
+![LibNoiseShaderEditor-RidgedMulti](Images/LibNoiseShaderEditor-RidgedMulti.png)
