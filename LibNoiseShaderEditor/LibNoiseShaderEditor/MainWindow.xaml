@@ -1,0 +1,98 @@
+﻿<Window x:Class="LibNoiseShaderEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibNoiseShaderEditor"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:reactiveUi="http://reactiveui.net"
+        xmlns:nodeViews="clr-namespace:NodeNetwork.Views;assembly=NodeNetwork"
+        xmlns:nodeList="clr-namespace:NodeNetwork.Toolkit.NodeList;assembly=NodeNetworkToolkit"
+        xmlns:viewmodels="clr-namespace:LibNoiseShaderEditor.ViewModels"
+        d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
+        mc:Ignorable="d"
+        Title="LibNoise Shader Editor"
+        Height="700"
+        Width="1250">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <nodeList:NodeListView Grid.Column="0"
+                               x:Name="nodeList"
+                               ShowTitle="False"
+                               HorizontalAlignment="Stretch"
+                               ShowDisplayModeSelector="False" />
+        <GridSplitter Grid.Column="1"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Stretch"
+                      Width="5" />
+        <DockPanel Grid.Column="2">
+            <StatusBar DockPanel.Dock="Bottom">
+                <TextBlock Text="{Binding CurrentFileName}" />
+            </StatusBar>
+            <StackPanel DockPanel.Dock="Top"
+                        Orientation="Horizontal">
+                <Button x:Name="newNetwork"
+                        Margin="5,5"
+                        Padding="8,2"
+                        Content="New"
+                        Click="NewNetwork_Click" />
+                <Button x:Name="openNetwork"
+                        Margin="5,5"
+                        Padding="8,2"
+                        Content="Open..."
+                        Click="OpenNetwork_Click" />
+                <Button x:Name="saveNetwork"
+                        Margin="5,5"
+                        Padding="8,2"
+                        Content="Save"
+                        Click="SaveNetwork_Click" />
+                <Button x:Name="saveAsNetwork"
+                        Margin="5,5"
+                        Padding="8,2"
+                        Content="Save As..."
+                        Click="SaveAsNetwork_Click" />
+                <Button x:Name="importNetwork"
+                        Margin="5,5"
+                        Padding="8,2"
+                        Content="Import..."
+                        Click="ImportNetwork_Click" />
+                <Button x:Name="generateRandomSeed"
+                        Margin="5,5"
+                        Padding="8,2"
+                        VerticalAlignment="Center"
+                        Content="Random"
+                        Click="GenerateRandomSeed_Click" />
+                <TextBlock Text="Seed:"
+                           VerticalAlignment="Center" />
+                <xctk:IntegerUpDown Width="150"
+                                    Margin="5,5"
+                                    Padding="8,2"
+                                    VerticalAlignment="Center"
+                                    Value="{Binding GlobalSeed, Delay=500}" />
+                <Button x:Name="viewAllButton"
+                        Content="View All"
+                        Margin="5,5"
+                        Padding="8,2"
+                        Click="ViewAllButton_Click" />
+                <TextBlock Text="Zoom Factor:"
+                           VerticalAlignment="Center" />
+                <Slider x:Name="zoomFactorSlider"
+                        Width="200"
+                        VerticalAlignment="Center"
+                        Margin="12,0"
+                        AutoToolTipPlacement="TopLeft"
+                        AutoToolTipPrecision="2" />
+                <Button x:Name="setLayoutButton"
+                        Content="Layout"
+                        Margin="5,5"
+                        Padding="8,2"
+                        Click="SetLayoutButton_Click" />
+            </StackPanel>
+            <nodeViews:NetworkView x:Name="viewHost" />
+        </DockPanel>
+    </Grid>
+</Window>

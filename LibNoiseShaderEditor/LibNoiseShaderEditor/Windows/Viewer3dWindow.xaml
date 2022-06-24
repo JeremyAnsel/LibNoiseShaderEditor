@@ -1,0 +1,38 @@
+﻿<Window x:Class="LibNoiseShaderEditor.Windows.Viewer3dWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibNoiseShaderEditor"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="3D Viewer"
+        Height="600"
+        Width="750"
+        WindowStyle="ToolWindow"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner"
+        x:Name="ViewerWindow">
+    <xctk:BusyIndicator x:Name="BusyIndicator">
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Left"
+                        Width="150">
+                <TextBlock Text="Width:" />
+                <TextBox Text="{Binding ElementName=ViewerWindow, Path=ExportWidth, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock Text="Height:" />
+                <TextBox Text="{Binding ElementName=ViewerWindow, Path=ExportHeight, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock />
+                <TextBlock Text="Export" />
+                <Button x:Name="exportImage"
+                        Margin="5"
+                        Content="Image"
+                        Click="ExportImage_Click" />
+                <Button x:Name="exportMp4"
+                        Margin="5"
+                        Content="MP4"
+                        Click="ExportMp4_Click" />
+            </StackPanel>
+            <Border x:Name="ControlHostElement" />
+        </DockPanel>
+    </xctk:BusyIndicator>
+</Window>

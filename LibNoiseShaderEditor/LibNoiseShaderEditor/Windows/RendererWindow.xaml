@@ -1,0 +1,52 @@
+﻿<Window x:Class="LibNoiseShaderEditor.Windows.RendererWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibNoiseShaderEditor"
+        xmlns:converters="clr-namespace:LibNoiseShaderEditor.Converters"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="Renderer Preview"
+        Height="600"
+        Width="750"
+        WindowStyle="ToolWindow"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner"
+        x:Name="PreviewWindow">
+    <xctk:BusyIndicator x:Name="BusyIndicator">
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Left"
+                        Width="150">
+                <TextBlock Text="Width:" />
+                <TextBox Text="{Binding ElementName=PreviewWindow, Path=ExportWidth, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock Text="Height:" />
+                <TextBox Text="{Binding ElementName=PreviewWindow, Path=ExportHeight, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock />
+                <TextBlock Text="Export" />
+                <Button x:Name="export"
+                        Margin="5"
+                        Content="Image"
+                        Click="Export_Click" />
+            </StackPanel>
+            <Grid Background="DarkGray">
+                <Image Width="512"
+                       Height="256">
+                    <Image.DataContext>
+                        <MultiBinding Converter="{x:Static converters:RendererWindowImageConverter.Default}">
+                            <Binding ElementName="PreviewWindow"
+                                     Path="Renderer"
+                                     Delay="500" />
+                            <Binding ElementName="PreviewWindow"
+                                     Path="ModuleNoise"
+                                     Delay="500" />
+                        </MultiBinding>
+                    </Image.DataContext>
+                    <Image.Source>
+                        <Binding Path="Result" />
+                    </Image.Source>
+                </Image>
+            </Grid>
+        </DockPanel>
+    </xctk:BusyIndicator>
+</Window>

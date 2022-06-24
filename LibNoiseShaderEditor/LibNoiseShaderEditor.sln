@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32602.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibNoiseShaderEditor", "LibNoiseShaderEditor\LibNoiseShaderEditor.csproj", "{B25D01A6-5820-4DA5-805F-C78ADB6CEECB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B25D01A6-5820-4DA5-805F-C78ADB6CEECB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B25D01A6-5820-4DA5-805F-C78ADB6CEECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B25D01A6-5820-4DA5-805F-C78ADB6CEECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B25D01A6-5820-4DA5-805F-C78ADB6CEECB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0CAFEA12-02CA-431C-B4A9-BD19700C07D4}
+	EndGlobalSection
+EndGlobal
