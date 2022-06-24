@@ -1,5 +1,7 @@
 # LibNoiseShaderEditor
 
+[![Build status](https://ci.appveyor.com/api/projects/status/x6kgvc2qmm0w5fpv/branch/main?svg=true)](https://ci.appveyor.com/project/JeremyAnsel/libnoiseshadereditor/branch/main)
+
 LibNoise Shader Editor is an editor for the JeremyAnsel.LibNoiseShader library.
 JeremyAnsel.LibNoiseShader is a .Net library which port the C++ libnoise library to C#.
 
