@@ -10,6 +10,7 @@ Description     | Value
 Documentation   | http://jeremyansel.github.io/JeremyAnsel.LibNoiseShader
 Editor          | https://github.com/JeremyAnsel/LibNoiseShaderEditor
 Build           | https://ci.appveyor.com/project/JeremyAnsel/libnoiseshadereditor/branch/main
+Samples         | https://github.com/JeremyAnsel/JeremyAnsel.LibNoiseShader-Samples
 Library         | https://github.com/JeremyAnsel/JeremyAnsel.LibNoiseShader
 Original code   | http://libnoise.sourceforge.net/
 
