@@ -78,7 +78,7 @@ namespace LibNoiseShaderEditor.Windows
                 };
 
                 var deviceResources = new RenderTargetDeviceResources((uint)width, (uint)height, D3D11FeatureLevel.FeatureLevel100, options);
-                var component = new DirectXGameComponent(_renderer, _noise);
+                var component = new DirectXGameComponent2(_renderer, _noise);
 
                 try
                 {
@@ -125,7 +125,7 @@ namespace LibNoiseShaderEditor.Windows
                 };
 
                 var deviceResources = new RenderTargetDeviceResources((uint)width, (uint)height, D3D11FeatureLevel.FeatureLevel100, options);
-                var component = new DirectXGameComponent(_renderer, _noise);
+                var component = new DirectXGameComponent2(_renderer, _noise);
 
                 bool mp4Startup = false;
                 IMFSinkWriter writer = null;

@@ -13,7 +13,7 @@ namespace LibNoiseShaderEditor.DirectX
 
         private readonly Noise3D noise;
 
-        private DirectXGameComponent gameComponent;
+        private IGameComponent gameComponent;
 
         public DirectXGame(IRenderer renderer, Noise3D noise)
         {
@@ -29,7 +29,7 @@ namespace LibNoiseShaderEditor.DirectX
 
         protected override void Init()
         {
-            this.gameComponent = this.CheckMinimalFeatureLevel(new DirectXGameComponent(this.renderer, this.noise));
+            this.gameComponent = this.CheckMinimalFeatureLevel(new DirectXGameComponent2(this.renderer, this.noise));
 
             base.Init();
 
