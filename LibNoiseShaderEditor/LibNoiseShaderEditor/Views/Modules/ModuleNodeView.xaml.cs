@@ -135,7 +135,7 @@ namespace LibNoiseShaderEditor.Views.Modules
                 return;
             }
 
-            var builder = new SphereBuilder(Module);
+            var builder = new SphereBuilder(Module, ModuleNoise.Seed);
             var renderer = new ImageRenderer(builder);
             renderer.BuildTerrainGradient();
 

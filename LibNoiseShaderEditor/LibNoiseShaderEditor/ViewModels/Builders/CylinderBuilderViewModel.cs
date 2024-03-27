@@ -55,7 +55,7 @@ namespace LibNoiseShaderEditor.ViewModels.Builders
                 return CurrentBuilder = null;
             }
 
-            var builder = new CylinderBuilder(Source.Value)
+            var builder = new CylinderBuilder(Source.Value, Main.Noise.Seed)
             {
                 Name = Setting.Name,
                 LowerAngleBound = Setting.LowerAngleBound,

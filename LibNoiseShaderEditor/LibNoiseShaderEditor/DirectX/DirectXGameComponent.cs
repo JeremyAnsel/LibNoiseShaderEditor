@@ -20,12 +20,6 @@ namespace LibNoiseShaderEditor.DirectX
 
         private DeviceResources deviceResources;
 
-        private D3D11ShaderResourceView permTextureView;
-
-        private D3D11ShaderResourceView perm2DTextureView;
-
-        private D3D11ShaderResourceView gradPermTextureView;
-
         private D3D11Buffer vertexBuffer;
 
         private D3D11Buffer indexBuffer;
@@ -63,10 +57,6 @@ namespace LibNoiseShaderEditor.DirectX
         public void CreateDeviceDependentResources(DeviceResources resources)
         {
             this.deviceResources = resources;
-
-            this.CreatePermutationTexture(this.noise.RetrievePermutationBuffer());
-            this.CreatePerm2DTexture(this.noise.RetrievePerm2DBuffer());
-            this.CreateGradPermTexture(this.noise.RetrieveGradPermTexture());
 
             var shapes = new BasicShapes(this.deviceResources.D3DDevice);
             shapes.CreateSphere(out this.vertexBuffer, out this.indexBuffer, out this.vertexCount, out this.indexCount);
@@ -236,50 +226,8 @@ float4 main(PixelShaderInput input) : SV_TARGET
             shader = this.deviceResources.D3DDevice.CreatePixelShader(pixelShaderBytecode, null);
         }
 
-        private void CreatePermutationTexture(int[] perm)
-        {
-            D3D11Texture1DDesc textureDesc = new(DxgiFormat.R32UInt, 256, 1, 1);
-
-            D3D11SubResourceData[] textureSubResData = new[]
-                {
-                    new D3D11SubResourceData(perm, 256 * 4)
-                };
-
-            using var texture = this.deviceResources.D3DDevice.CreateTexture1D(textureDesc, textureSubResData);
-            this.permTextureView = this.deviceResources.D3DDevice.CreateShaderResourceView(texture, null);
-        }
-
-        private void CreatePerm2DTexture(int[] perm2D)
-        {
-            D3D11Texture2DDesc textureDesc = new(DxgiFormat.R32G32B32A32UInt, 256, 256, 1, 1);
-
-            D3D11SubResourceData[] textureSubResData = new[]
-                {
-                    new D3D11SubResourceData(perm2D, 256 * 16)
-                };
-
-            using var texture = this.deviceResources.D3DDevice.CreateTexture2D(textureDesc, textureSubResData);
-            this.perm2DTextureView = this.deviceResources.D3DDevice.CreateShaderResourceView(texture, null);
-        }
-
-        private void CreateGradPermTexture(float[] grad)
-        {
-            D3D11Texture1DDesc textureDesc = new(DxgiFormat.R32G32B32A32Float, 512, 1, 1);
-
-            D3D11SubResourceData[] textureSubResData = new[]
-                {
-                    new D3D11SubResourceData(grad, 512 * 16)
-                };
-
-            using var texture = this.deviceResources.D3DDevice.CreateTexture1D(textureDesc, textureSubResData);
-            this.gradPermTextureView = this.deviceResources.D3DDevice.CreateShaderResourceView(texture, null);
-        }
-
         public void ReleaseDeviceDependentResources()
         {
-            D3D11Utils.DisposeAndNull(ref this.permTextureView);
-            D3D11Utils.DisposeAndNull(ref this.perm2DTextureView);
-            D3D11Utils.DisposeAndNull(ref this.gradPermTextureView);
             D3D11Utils.DisposeAndNull(ref this.vertexBuffer);
             D3D11Utils.DisposeAndNull(ref this.indexBuffer);
             D3D11Utils.DisposeAndNull(ref this.inputLayout);
@@ -329,10 +277,8 @@ float4 main(PixelShaderInput input) : SV_TARGET
 
             context.VertexShaderSetShader(this.vertexShader, null);
             context.VertexShaderSetConstantBuffers(0, new[] { this.constantBuffer });
-            context.VertexShaderSetShaderResources(0, new[] { this.permTextureView, this.perm2DTextureView, this.gradPermTextureView });
 
             context.PixelShaderSetShader(this.pixelShader, null);
-            context.PixelShaderSetShaderResources(0, new[] { this.permTextureView, this.perm2DTextureView, this.gradPermTextureView });
 
             context.DrawIndexed((uint)this.indexCount, 0, 0);
         }

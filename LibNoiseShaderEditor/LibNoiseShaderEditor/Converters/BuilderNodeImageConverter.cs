@@ -34,7 +34,7 @@ namespace LibNoiseShaderEditor.Converters
 
                 try
                 {
-                    data = MapGenerator.GenerateColorMapOnCpu(noise, renderer, width, height);
+                    data = MapGenerator.GenerateColorMapOnCpu(renderer, width, height);
                 }
                 catch
                 {

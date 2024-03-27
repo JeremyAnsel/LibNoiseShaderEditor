@@ -40,13 +40,13 @@ namespace LibNoiseShaderEditor.Converters
                 switch (mode)
                 {
                     case 0:
-                        builder = new PlaneBuilder(module);
+                        builder = new PlaneBuilder(module, noise.Seed);
                         width = 256;
                         height = 256;
                         break;
 
                     case 1:
-                        builder = new SphereBuilder(module);
+                        builder = new SphereBuilder(module, noise.Seed);
                         width = 512;
                         height = 256;
                         break;
@@ -62,7 +62,7 @@ namespace LibNoiseShaderEditor.Converters
 
                 try
                 {
-                    data = MapGenerator.GenerateColorMapOnCpu(noise, renderer, width, height);
+                    data = MapGenerator.GenerateColorMapOnCpu(renderer, width, height);
                 }
                 catch (Exception ex)
                 {

@@ -212,7 +212,7 @@ float4 main(PixelShaderInput input) : SV_TARGET
         private void CreateNoiseTexture()
         {
             ColorMap map = MapGenerator
-                .GenerateColorMapOnCpu(this.noise, this.renderer, 1024, 512);
+                .GenerateColorMapOnCpu(this.renderer, 1024, 512);
 
             D3D11Texture2DDesc textureDesc = new(DxgiFormat.B8G8R8A8UNorm, (uint)map.Width, (uint)map.Height, 1, 1);
 

@@ -29,14 +29,14 @@ namespace LibNoiseShaderEditor.Converters
                 int width = (int)GlobalConstants.ModuleNodePreviewImageWidth;
                 int height = (int)GlobalConstants.ModuleNodePreviewImageHeight;
 
-                var builder = new PlaneBuilder(module);
+                var builder = new PlaneBuilder(module, noise.Seed);
                 var renderer = new ImageRenderer(builder);
 
                 ColorMap data;
 
                 try
                 {
-                    data = MapGenerator.GenerateColorMapOnCpu(noise, renderer, width, height);
+                    data = MapGenerator.GenerateColorMapOnCpu(renderer, width, height);
                 }
                 catch
                 {

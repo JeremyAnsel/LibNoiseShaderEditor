@@ -55,7 +55,7 @@ namespace LibNoiseShaderEditor.ViewModels.Builders
                 return CurrentBuilder = null;
             }
 
-            var builder = new PlaneBuilder(Source.Value)
+            var builder = new PlaneBuilder(Source.Value, Main.Noise.Seed)
             {
                 Name = Setting.Name,
                 IsSeamless = Setting.IsSeamless,

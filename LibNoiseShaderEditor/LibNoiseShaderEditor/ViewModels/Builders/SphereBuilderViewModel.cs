@@ -55,7 +55,7 @@ namespace LibNoiseShaderEditor.ViewModels.Builders
                 return CurrentBuilder = null;
             }
 
-            var builder = new SphereBuilder(Source.Value)
+            var builder = new SphereBuilder(Source.Value, Main.Noise.Seed)
             {
                 Name = Setting.Name,
                 SouthLatBound = Setting.SouthLatBound,

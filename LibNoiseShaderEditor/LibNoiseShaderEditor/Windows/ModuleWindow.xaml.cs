@@ -62,7 +62,7 @@ namespace LibNoiseShaderEditor.Windows
 
         private void ExportPlaneGrayscale_Click(object sender, RoutedEventArgs e)
         {
-            var builder = new PlaneBuilder(Module);
+            var builder = new PlaneBuilder(Module, ModuleNoise.Seed);
             var renderer = new ImageRenderer(builder);
             renderer.BuildGrayscaleGradient();
             ExportRenderer(renderer);
@@ -70,7 +70,7 @@ namespace LibNoiseShaderEditor.Windows
 
         private void ExportPlaneColor_Click(object sender, RoutedEventArgs e)
         {
-            var builder = new PlaneBuilder(Module);
+            var builder = new PlaneBuilder(Module, ModuleNoise.Seed);
             var renderer = new ImageRenderer(builder);
             renderer.BuildTerrainGradient();
             ExportRenderer(renderer);
@@ -78,7 +78,7 @@ namespace LibNoiseShaderEditor.Windows
 
         private void ExportCylinderGrayscale_Click(object sender, RoutedEventArgs e)
         {
-            var builder = new CylinderBuilder(Module);
+            var builder = new CylinderBuilder(Module, ModuleNoise.Seed);
             var renderer = new ImageRenderer(builder);
             renderer.BuildGrayscaleGradient();
             ExportRenderer(renderer);
@@ -86,7 +86,7 @@ namespace LibNoiseShaderEditor.Windows
 
         private void ExportCylinderColor_Click(object sender, RoutedEventArgs e)
         {
-            var builder = new CylinderBuilder(Module);
+            var builder = new CylinderBuilder(Module, ModuleNoise.Seed);
             var renderer = new ImageRenderer(builder);
             renderer.BuildTerrainGradient();
             ExportRenderer(renderer);
@@ -94,7 +94,7 @@ namespace LibNoiseShaderEditor.Windows
 
         private void ExportSphereGrayscale_Click(object sender, RoutedEventArgs e)
         {
-            var builder = new SphereBuilder(Module);
+            var builder = new SphereBuilder(Module, ModuleNoise.Seed);
             var renderer = new ImageRenderer(builder);
             renderer.BuildGrayscaleGradient();
             ExportRenderer(renderer);
@@ -102,7 +102,7 @@ namespace LibNoiseShaderEditor.Windows
 
         private void ExportSphereColor_Click(object sender, RoutedEventArgs e)
         {
-            var builder = new SphereBuilder(Module);
+            var builder = new SphereBuilder(Module, ModuleNoise.Seed);
             var renderer = new ImageRenderer(builder);
             renderer.BuildTerrainGradient();
             ExportRenderer(renderer);
@@ -124,7 +124,7 @@ namespace LibNoiseShaderEditor.Windows
             BusyAction.Run(BusyIndicator, () =>
             {
                 MapGenerator
-                    .GenerateColorMapOnCpu(noise, renderer, width, height)
+                    .GenerateColorMapOnCpu(renderer, width, height)
                     .SaveBitmap(fileName);
             });
         }

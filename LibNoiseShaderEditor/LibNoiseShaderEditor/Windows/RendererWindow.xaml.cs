@@ -79,7 +79,7 @@ namespace LibNoiseShaderEditor.Windows
             BusyAction.Run(BusyIndicator, () =>
             {
                 MapGenerator
-                    .GenerateColorMapOnCpu(noise, renderer, width, height)
+                    .GenerateColorMapOnCpu(renderer, width, height)
                     .SaveBitmap(fileName);
             });
         }
